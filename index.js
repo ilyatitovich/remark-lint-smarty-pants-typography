@@ -16,7 +16,7 @@ function smartyPantsTypography(tree, file, options) {
     visit(tree, 'text', node => {
       const oldText = node.value
       const processedText = retext()
-        .use(retextSmartypants, { ...options, dashes: 'oldschool' })
+        .use(retextSmartypants, { ...options })
         .processSync(oldText)
         .toString()
 
