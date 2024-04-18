@@ -6,6 +6,12 @@ import { visit } from 'unist-util-visit'
 import { retext } from 'retext'
 import retextSmartypants from 'retext-smartypants'
 
+function isURL(text) {
+  const urlRegex =
+    /\b(?:https?|ftp):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[A-Z0-9+&@#\/%=~_|]/gi
+  return urlRegex.test(text)
+}
+
 function smartyPantsTypography(tree, file, options) {
   try {
     const { cwd, history } = file
@@ -15,17 +21,20 @@ function smartyPantsTypography(tree, file, options) {
 
     visit(tree, 'text', node => {
       const oldText = node.value
-      const processedText = retext()
-        .use(retextSmartypants, { ...options })
-        .processSync(oldText)
-        .toString()
 
-      if (oldText !== processedText) {
-        processedFileContent = processedFileContent.replace(
-          oldText,
-          processedText
-        )
-        file.message('Smart typography was applied', node)
+      if (!isURL(oldText)) {
+        const processedText = retext()
+          .use(retextSmartypants, { ...options })
+          .processSync(oldText)
+          .toString()
+
+        if (oldText !== processedText) {
+          processedFileContent = processedFileContent.replace(
+            oldText,
+            processedText
+          )
+          file.message('Smart typography was applied', node)
+        }
       }
     })
 

@@ -1,6 +1,6 @@
 {
   "name": "remark-lint-smarty-pants-typography",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Ensure that your Markdown use curved quotes, apostrophes and hyphens/dashes",
   "keywords": [
     "remark",
