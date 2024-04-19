@@ -2,6 +2,12 @@
 
 [remark-lint](https://github.com/remarkjs/remark-lint) plugin to ensure that your Markdown use curved quotes, apostrophes and hyphens/dashes.
 
+## Install
+
+```sh
+npm install remark-lint-smarty-pants-typography
+```
+
 ## Usage
 
 Use like any other [remark-lint](https://github.com/remarkjs/remark-lint) plugin.
