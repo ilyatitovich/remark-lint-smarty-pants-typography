@@ -4,6 +4,7 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { remark } from 'remark'
 import { compareMessage } from 'vfile-sort'
+import frontmatter from 'remark-frontmatter'
 import remarkLintSmartyPantsTypography from '../index.js'
 
 const invalidMdPath = path.join(import.meta.dirname, 'docs', 'invalid.md')
@@ -35,4 +36,32 @@ test('no symbols to process', async () => {
     .process(validMd)
 
   assert.strictEqual(result.messages.length, 0)
+})
+
+test('ignores trailing quotes in frontmatter', async () => {
+  const result = await remark()
+    .use(frontmatter, ['yaml'])
+    .use(remarkLintSmartyPantsTypography)
+    .process(
+`---
+title: "This is a title"
+---`
+    )
+
+  assert.strictEqual(result.messages.length, 0)
+})
+
+test('ignores trailing quotes in frontmatter', async () => {
+  const result = await remark()
+    .use(frontmatter, ['yaml'])
+    .use(remarkLintSmartyPantsTypography)
+    .process(
+`---
+title: "This is a title"
+---
+
+Some text with "quotes".`
+    )
+
+  assert.strictEqual(result.messages.length, 2)
 })

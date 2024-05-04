@@ -42,9 +42,11 @@ function smartyPantsTypography(tree, file, options) {
       fs.writeFileSync(processedFilePath, processedFileContent, 'utf-8')
       file.message('File has been overwritten')
     }
+  /* c8 ignore start */
   } catch (error) {
     throw new Error(`Error processing Markdown: ${error.message}`)
   }
+  /* c8 ignore stop */
 }
 
 const remarkLintSmartyPantsTypography = lintRule(
