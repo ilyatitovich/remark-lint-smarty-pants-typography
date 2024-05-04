@@ -35,6 +35,7 @@
     "clean-publish": "^4.3.0",
     "eslint": "^8.57.0",
     "remark": "^15.0.1",
+    "remark-frontmatter": "^5.0.0",
     "size-limit": "^11.0.2",
     "vfile-sort": "^4.0.0"
   },
