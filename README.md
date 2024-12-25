@@ -47,3 +47,9 @@ It’s will be held from June 1-5. The statement – if you ask me — is quite 
 
 5:1-5:91 warning Smart typography was applied smarty-pants-typography remark-lint
 ```
+
+## Support the Project
+
+If you find this tool helpful, consider supporting us:
+
+- [**Support Our Work**](https://ilyatitov.vercel.app/payments)
