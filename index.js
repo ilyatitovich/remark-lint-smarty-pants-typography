@@ -12,7 +12,7 @@ function isURL(text) {
   return urlRegex.test(text)
 }
 
-function smartyPantsTypography(tree, file, options) {
+export function smartyPantsTypography(tree, file, options) {
   try {
     const { cwd, history } = file
     const processedFilePath = `${cwd}/${history[0]}`

@@ -4,7 +4,8 @@ import assert from 'node:assert/strict'
 import test from 'node:test'
 import { remark } from 'remark'
 import { compareMessage } from 'vfile-sort'
-import remarkLintSmartyPantsTypography from '../index.js'
+import remarkLintSmartyPantsTypography, {smartyPantsTypography} from '../index.js'
+
 
 const invalidMdPath = path.join(import.meta.dirname, 'docs', 'invalid.md')
 const validMdPath = path.join(import.meta.dirname, 'docs', 'valid.md')
@@ -36,3 +37,9 @@ test('no symbols to process', async () => {
 
   assert.strictEqual(result.messages.length, 0)
 })
+
+test('throws error on invalid input', () => {
+  assert.throws(() => {
+    smartyPantsTypography(null, {}, {});
+  }, /Error/, 'Should throw an error on invalid input');
+});
